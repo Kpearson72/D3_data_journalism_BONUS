@@ -112,25 +112,22 @@ function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 // function to update circle group using Tooltip
 // ==============================
 function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
-
+    //===========================// xLabels - whatever the user choses
     if (chosenXAxis === "poverty") {
         var xLabel = "Poverty (%)";
     }
     else if (chosenXAxis === "age") {
         var xLabel = "Age (Median)";
     }
-    else {
-        var xLabel = "Household Income (Median)";
-    }
+
+    //===========================// yLabels - whatever the user choses
     if (chosenYAxis === "healthcare") {
         var yLabel = "Lacks Healthcare (%)";
     }
     else if (chosenYAxis === "smokes") {
         var yLabel = "Smokes (%)";
     }
-    else {
-        var yLabel = "Obese (%)";
-    }
+
 
     // Initialize tool tip
     // ==============================
@@ -180,9 +177,8 @@ d3.csv("assets/data/data.csv")
             data.poverty = +data.poverty;
             data.healthcare = +data.healthcare;
             data.age = +data.age;
-            data.income = +data.income;
             data.smokes = +data.smokes;
-            data.obesity = +data.obesity;
+
         });
         console.log(censusData);
 
@@ -257,13 +253,6 @@ d3.csv("assets/data/data.csv")
             .classed("inactive", true)
             .text("Age (Median)");
 
-        var incomeLabel = xLabelsGroup.append("text")
-            .attr("x", 0)
-            .attr("y", 60)
-            .attr("value", "income") // value to grab for event listener
-            .classed("inactive", true)
-            .text("Household Income (Median)");
-
         // Create Group of 3 yAxis Labels
         // ==============================
         var labelsYGroup = chartGroup.append("g")
@@ -291,16 +280,6 @@ d3.csv("assets/data/data.csv")
             .text("Smokes (%)")
             .attr("dy", "1em");
 
-        var obesityLabel = labelsYGroup.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", -70)
-            .attr("x", 0)
-            .classed("inactive", true)
-            .attr("value", "obesity") // value to grab for event listener
-            .classed("axis-text", true)
-            .text("Obese (%)")
-            .attr("dy", "1em");
-
         // updateToolTip function above csv import
         // ==============================
         var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis,circlesGroup,textGroup);
@@ -310,18 +289,13 @@ d3.csv("assets/data/data.csv")
         xLabelsGroup.selectAll("text")
             .on("click",function(){
                 var value = d3.select(this).attr("value");
+                // replace and update values, scale, axis, circles, text and tootltip
                 if (value !== chosenXAxis) {
-                    // replaces Value
                     chosenXAxis = value;
-                    // updating xScale for new census data
                     xLinearScale = xScale(censusData, chosenXAxis);
-                    // updating xAxis 
                     xAxis = renderXAxis(xLinearScale, xAxis);
-                    // updating Circles 
                     circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
-                    // updating Text 
                     textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
-                    // updating Tooltips 
                     circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
                 if (chosenXAxis === "poverty") {
                     povertyLabel
@@ -330,9 +304,7 @@ d3.csv("assets/data/data.csv")
                     ageLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    incomelabel
-                        .classed("active", false)
-                        .classed("inactive", true);
+
                 }
                 else if (chosenXAxis === "age"){
                     povertyLabel
@@ -341,9 +313,7 @@ d3.csv("assets/data/data.csv")
                     ageLabel
                         .classed("active", true)
                         .classed("inactive", false);
-                    incomeLabel
-                        .classed("active", false)
-                        .classed("inactive", true);
+
                 }
                 else {
                     povertyLabel
@@ -352,36 +322,26 @@ d3.csv("assets/data/data.csv")
                     ageLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    incomeLabel
-                        .classed("active", true)
-                        .classed("inactive", false);
+
                 }
             }      
         });      
-
+        console.log(xLabelsGroup);
         labelsYGroup.selectAll("text")
             .on("click",function(){
                 var value = d3.select(this).attr("value");
+                // replace and update values, scale, axis, circles, text and tootltip
                 if (value !== chosenYAxis) {
-                    // replaces Value
                     chosenYAxis = value;
-                    // updating xScale for new census data
                     yLinearScale = yScale(censusData, chosenYAxis);
-                    // updating xAxis 
                     yAxis = renderYAxes(yLinearScale, yAxis);
-                    // updating Circles 
                     circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
-                    // updating Text 
                     textGroup = renderText(textGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
-                    // updating Tooltips 
                     circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup);
                 if (chosenYAxis === "healthcare") {
                     healthLabel
                         .classed("active", true)
                         .classed("inactive", false);
-                    obesityLabel
-                        .classed("active", false)
-                        .classed("inactive", true);
                     smokeslabel
                         .classed("active", false)
                         .classed("inactive", true);
@@ -390,9 +350,6 @@ d3.csv("assets/data/data.csv")
                     healthLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    obesityLabel
-                        .classed("active", true)
-                        .classed("inactive", false);
                     smokesLabel
                         .classed("active", false)
                         .classed("inactive", true);
@@ -401,9 +358,6 @@ d3.csv("assets/data/data.csv")
                     healthLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    obesityLabel
-                        .classed("active", false)
-                        .classed("inactive", false);
                     smokesLabel
                         .classed("active", true)
                         .classed("inactive", false);

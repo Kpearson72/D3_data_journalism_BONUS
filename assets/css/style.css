@@ -40,9 +40,10 @@ body {
   background-color: rgb(238, 236, 236);
 }
 
-title  mb-0 h1 {
+title  {
   font-family: 'Times New Roman', Times, serif;
-  color: white
+  color: white;
+  font-size:30px;
 }
 
 .article h2 {

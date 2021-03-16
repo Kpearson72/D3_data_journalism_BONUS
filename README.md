@@ -10,28 +10,17 @@ The editor wants to run a series of feature stories about the health risks facin
 
 The data set included with the assignment is based on 2014 ACS 1-year estimates from the [US Census Bureau](https://data.census.gov/cedsci/), but you are free to investigate a different data set. The current data set includes data on rates of income, obesity, poverty, etc. by state. MOE stands for "margin of error."
 
-### Before You Begin
+## The Task
 
-1. Create a new repository for this project called `D3-Challenge`. **Do not add this homework to an existing repository**.
+### Core Assignment: D3 Dabbler
 
-2. Clone the new repository to your computer.
+ A scatter plot was created between  `Healthcare vs. Poverty`.
 
-3. Inside your local git repository, create a directory for the D3 challenge. Use the folder name to correspond to the challenge: **D3_data_journalism**.
+Using the D3 techniques we learned in class, a scatter plot that represents each state with circle elements was created. The code for the above can be found in  [`app.js`](https://github.com/Kpearson72/D3-Challenge/blob/main/D3_data_journalism/assets/js/app.js) file in D3__data_journamlism directory under [D3-Challenge](https://github.com/Kpearson72/D3-Challenge) github repository. I used the `d3.csv` function to read the data: [`data.csv`](https://github.com/Kpearson72/D3-Challenge/blob/main/D3_data_journalism/assets/data/data.csv). The final result is the scatterplot found below.
 
-4. This homework utilizes both **html** and **Javascript** so be sure to add all the necessary files. These will be the main files to run for analysis.
+![Core Assignment: Dabbler](Images/Core_Assignment.png)
 
-5. Push the above changes to GitHub or GitLab.
-
-## Your Task
-
-### Core Assignment: D3 Dabbler (Required Assignment)
-
-![4-scatter](Images/4-scatter.jpg)
-
-You need to create a scatter plot between two of the data variables such as `Healthcare vs. Poverty` or `Smokers vs. Age`.
-
-Using the D3 techniques we taught you in class, create a scatter plot that represents each state with circle elements. You'll code this graphic in the `app.js` file of your homework directory—make sure you pull in the data from `data.csv` by using the `d3.csv` function. Your scatter plot should ultimately appear like the image at the top of this section.
-
+Requirements:
 * Include state abbreviations in the circles.
 
 * Create and situate your axes and labels to the left and bottom of the chart.
@@ -40,46 +29,22 @@ Using the D3 techniques we taught you in class, create a scatter plot that repre
 
 - - -
 
-### Bonus: Impress the Boss (Optional Assignment)
+### [Bonus: Impress the Boss](https://github.com/Kpearson72/D3-Challenge/tree/main/D3_data_journalism_BONUS)
+Check out the github [D3 Times Page](https://kpearson72.github.io/D3_data_journalism_BONUS/)
 
-Why make a static graphic when D3 lets you interact with your data?
-
-![7-animated-scatter](Images/7-animated-scatter.gif)
+![animated-gif](Images/Gyazo_video_Bonus.gif)
 
 #### 1. More Data, More Dynamics
 
-You're going to include more demographics and more risk factors. Place additional labels in your scatter plot and give them click events so that your users can decide which data to display. Animate the transitions for your circles' locations as well as the range of your axes. Do this for two risk factors for each axis. Or, for an extreme challenge, create three for each axis.
+Included are more demographics and more risk factors:
+1. Placed additional labels in the scatter plot and give each click events so that users can decide which data to display.
+   
+2.  Animated transitions for circles' locations as well as the range of each axes. This was done for each risk factors for each axis.
 
-* Hint: Try binding all of the CSV data to your circles. This will let you easily determine their x or y values when you click the labels.
+#### 2. d3-tip - toolTip
 
-#### 2. Incorporate d3-tip
-
-While the ticks on the axes allow us to infer approximate values for each circle, it's impossible to determine the true value without adding another layer of data. Enter tooltips: developers can implement these in their D3 graphics to reveal a specific element's data when the user hovers their cursor over the element. Add tooltips to your circles and display each tooltip with the data that the user has selected. Use the `d3-tip.js` plugin developed by [Justin Palmer](https://github.com/Caged)—we've already included this plugin in your assignment directory.
-
-![8-tooltip](Images/8-tooltip.gif)
+Added tooltips for all circles and display each tooltip with the data that the user has selected. Use the `d3-tip.js` plugin developed by [Justin Palmer](https://github.com/Caged)—we've already included this plugin in your assignment directory.
 
 * Check out [David Gotz's example](https://bl.ocks.org/davegotz/bd54b56723c154d25eedde6504d30ad7) to see how you should implement tooltips with d3-tip.
 
 - - -
-
-### Assessment
-
-Your final product will be assessed on the following metrics:
-
-* Creation of a **new** repository on GitHub called `D3-Challenge` (note the kebab-case). Do not add to an already existing repo.
-
-* Completion of all steps in the core assignment
-
-* Coherency of scatter plot (labels, ticks)
-
-* Visual attraction
-
-* Professionalism
-
-* Ensure your repository has regular commits (i.e. 20+ commits) and a thorough README.md file
-
-**Good luck!**
-
-### Copyright
-
-Trilogy Education Services © 2019. All Rights Reserved.
